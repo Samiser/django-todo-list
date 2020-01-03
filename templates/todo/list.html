@@ -8,11 +8,19 @@
 <body>
 	<div id='content'>
 		<h1>{{ list.name }}</h1>
-		<ul id="todo_list">
+		<p>{{ list.description }}</p>
+		<div class="add" id="add_item">
+			<input type="text" id="new_item_content">
+			<Button onclick="addItem({{ list.id }})">Add</button>
+		</div>
+		<h2>To Do</h2>
+		<ul class="list" id="todo_list">
 			{% include 'todo/list_only.html' %}
 		</ul>
-		<input type="text" id="new_item_content">
-		<Button onclick="addItem({{ list.id }})">Add</button>
+		<h2>Done</h2>
+		<ul class="list" id="done_list">
+			{% include 'todo/list_done_only.html' %}
+		</ul>
 	</div>
 </body>
 </html>

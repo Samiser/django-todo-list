@@ -8,17 +8,14 @@
 <body>
 	<div id='content'>
 		<h1>Lists</h1>
+		<a href="{% url 'todo:add_list_form' %}">Add a list</a>
 		{% if lists %}
-			<ul id="list_list">
+			<ul class="list" id="list_list">
 			{% include 'todo/list_list.html' %}
 			</ul>
 		{% else %}
 			<p>You don't have any lists</p>
 		{% endif %}
-		
-		<input type='text' id='new_list_name'></input>
-		<input type='text' id='new_list_description'></input>
-		<button onclick="addList()">Add List</button>
 	</div>
 </body>
 </html>

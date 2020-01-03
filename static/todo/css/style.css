@@ -1,12 +1,19 @@
+:root {
+	--bg-1: #43aa8b;
+	--bg-2: #254441;
+	--fg-1: #d1faff;
+	--bg-3: #272d2d;
+}
+
 body {
 	font-family: Cambria, "Hoefler Text", Utopia, "Liberation Serif", "Nimbus Roman No9 L Regular", Times, "Times New Roman", serif;
-	background-color: black;
-	color: white;
+	background-color: var(--bg-1);
+	color: var(--fg-1);
 }
 
 a {
 	text-decoration: none;
-	color: white;
+	color: var(--fg-1);
 }
 
 ul {
@@ -22,13 +29,40 @@ button {
 	float: right;
 }
 
-li {
+input {
+	width: 270px;
+}
+
+.add li {
 	height: 30px;
-	padding: 20px;
+	font-size: 20px;
+	padding: 10px;
+	margin: 10px;
+	background-color: var(--bg-2);
+	border-radius: 10px;
+}
+
+.list li {
+	height: 30px;
+	padding: 10px;
+	font-size: 20px;
+	margin: 10px;
+	background-color: var(--bg-3);
+	border-radius: 10px;
 }
 
 #content {
-	width: 300px;
+	background-color: var(--bg-2);
+	width: 400px;
 	margin-left: auto;
 	margin-right: auto;
+	padding: 40px;
+	border-radius: 10px;
+}
+
+.add {
+	background-color: var(--bg-3);
+	padding: 10px;
+	margin: 10px;
+	border-radius: 10px;
 }

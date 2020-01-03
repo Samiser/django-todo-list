@@ -15,6 +15,9 @@ def list(request, list_id):
     context = {'list':parent_list, 'items':items}
     return render(request, 'todo/list.html', context)
 
+def add_list_form(request):
+    return render(request, 'todo/add_list.html')
+
 @csrf_exempt
 def add(request, list_id):
     target_list = get_object_or_404(List, pk=list_id)
@@ -33,10 +36,18 @@ def remove(request, list_id):
     return render(request, 'todo/list_only.html', {'items':items, 'list':target_list})
 
 @csrf_exempt
+def delete(request, list_id):
+    target_list = get_object_or_404(List, pk=list_id)
+    item = get_object_or_404(Item, pk=request.POST['item_id'])
+    item.delete()
+    items = Item.objects.filter(todo_list=target_list)
+    return render(request, 'todo/list_done_only.html', {'items':items, 'list':target_list})
+
+@csrf_exempt
 def add_list(request):
     new_list = List(name=request.POST['name'], description=request.POST['description'])
     new_list.save()
-    return render(request, 'todo/list_list.html', {'lists': List.objects.all()})
+    return HttpResponseRedirect(reverse('todo:index'))
 
 @csrf_exempt
 def remove_list(request):

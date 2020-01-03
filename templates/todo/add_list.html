@@ -1,0 +1,20 @@
+<!doctype html>
+<html>
+<head>
+	{% load static %}
+	<link rel="stylesheet" type="text/css" href="{% static 'todo/css/style.css' %}">
+	<script src="{% static 'todo/js/addlist.js' %}"></script>
+</head>
+<body>
+	<div id='content'>
+		<form action="{% url 'todo:add_list' %}" method="post">
+			<ul class="list">
+				<li><label for="new_list_name">Name</label>	
+				<input name='name' type='text' id='new_list_name'></input></li>
+				<li><label for="new_list_description">About</label>	
+				<input name='description' type='text' id='new_list_description'></input></li>
+				<li><input type='submit' value='Add List'></input></li>
+		</form>
+	</div>
+</body>
+</html>
