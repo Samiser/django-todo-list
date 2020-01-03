@@ -1,0 +1,5 @@
+{% for item in items %}
+	{% if not item.done %}
+	<li><button onclick="removeItem({{ list.id }},{{ item.id }})">Done</button> {{ item.content }}</li>
+	{% endif %}
+{% endfor %}

@@ -1,0 +1,3 @@
+{% for list in lists %}
+	<li><a href="{% url 'todo:list' list.id %}">{{ list.name }}</a><button onclick="removeList({{ list.id }})">Delete</button></li>
+{% endfor %}
