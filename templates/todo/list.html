@@ -2,6 +2,7 @@
 <html>
 <head>
 	{% load static %}
+	<title>Samiser's Todo List</title>
 	<link rel="stylesheet" type="text/css" href="{% static 'todo/css/style.css' %}">
 	<script src="{% static 'todo/js/additem.js' %}"></script>
 </head>
@@ -13,14 +14,9 @@
 			<input type="text" id="new_item_content">
 			<Button onclick="addItem({{ list.id }})">Add</button>
 		</div>
-		<h2>To Do</h2>
-		<ul class="list" id="todo_list">
+		<div id="todo_list">
 			{% include 'todo/list_only.html' %}
-		</ul>
-		<h2>Done</h2>
-		<ul class="list" id="done_list">
-			{% include 'todo/list_done_only.html' %}
-		</ul>
+		</div>
 	</div>
 </body>
 </html>

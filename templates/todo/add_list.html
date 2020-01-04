@@ -2,11 +2,13 @@
 <html>
 <head>
 	{% load static %}
+	<title>Samiser's Todo List</title>
 	<link rel="stylesheet" type="text/css" href="{% static 'todo/css/style.css' %}">
 	<script src="{% static 'todo/js/addlist.js' %}"></script>
 </head>
 <body>
 	<div id='content'>
+		<h1>Add a List</h1>
 		<form action="{% url 'todo:add_list' %}" method="post">
 			<ul class="list">
 				<li><label for="new_list_name">Name</label>	

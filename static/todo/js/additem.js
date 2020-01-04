@@ -32,7 +32,7 @@ function deleteItem(list_id, item_id) {
 	xhttp.onreadystatechange = function() {
 	  if (this.readyState == 4 && this.status == 200) {
 			// refresh list
-			document.getElementById("done_list").innerHTML = this.responseText;
+			document.getElementById("todo_list").innerHTML = this.responseText;
 	  }
 	};
 	xhttp.open("POST", "/todo/" + String(list_id) + "/delete/", true);

@@ -1,5 +1,0 @@
-{% for item in items %}
-	{% if item.done %}
-	<li><button onclick="deleteItem({{ list.id }},{{ item.id }})">Delete</button>{{ item.content }}</li>
-	{% endif %}
-{% endfor %}

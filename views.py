@@ -41,7 +41,7 @@ def delete(request, list_id):
     item = get_object_or_404(Item, pk=request.POST['item_id'])
     item.delete()
     items = Item.objects.filter(todo_list=target_list)
-    return render(request, 'todo/list_done_only.html', {'items':items, 'list':target_list})
+    return render(request, 'todo/list_only.html', {'items':items, 'list':target_list})
 
 @csrf_exempt
 def add_list(request):

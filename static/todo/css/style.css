@@ -1,5 +1,6 @@
 :root {
 	--bg-1: #43aa8b;
+	--bg-1-dim: #2a9374;
 	--bg-2: #254441;
 	--fg-1: #d1faff;
 	--bg-3: #272d2d;
@@ -27,6 +28,16 @@ button, input {
 
 button {
 	float: right;
+	background-color: var(--bg-1);
+	color: var(--fg-1);
+	border: none;
+	border-radius: 5px;
+	padding: 7px;
+	width: 70px;
+}
+
+button:hover {
+	background-color: var(--bg-1-dim);
 }
 
 input {
