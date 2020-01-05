@@ -38,10 +38,22 @@ button {
 
 button:hover {
 	background-color: var(--bg-1-dim);
+	cursor: pointer;
 }
 
 input {
 	width: 270px;
+	border-radius: 5px;
+	height: 28px;
+	border: none;
+}
+
+label {
+	padding: 10px;
+}
+
+#new_item_content {
+	width: calc(100% - 80px);
 }
 
 .add li {
@@ -62,13 +74,27 @@ input {
 	border-radius: 10px;
 }
 
-#content {
+.content {
 	background-color: var(--bg-2);
 	width: 400px;
-	margin-left: auto;
-	margin-right: auto;
-	padding: 40px;
+	padding: 4%;
+	margin: 10px;
 	border-radius: 10px;
+	display: inline-block;
+	vertical-align: top;
+}
+
+.left {
+	float: left;
+}
+
+.right {
+	float: right;
+}
+
+#wrapper {
+	margin: 0 auto;
+	width: 1000px;
 }
 
 .add {
@@ -77,3 +103,80 @@ input {
 	margin: 10px;
 	border-radius: 10px;
 }
+
+.form_list {
+	background-color: var(--bg-3);
+	padding: 30px;
+	border-radius: 10px;
+}
+
+.hide {
+   display: none;
+}
+
+.form_list li {
+	margin: 10px;
+}
+
+.form_list li input {
+	width: 95%;
+}
+
+.form_list li input#submit {
+	float: center;
+	background-color: var(--bg-1);
+	color: var(--fg-1);
+	border: none;
+	border-radius: 5px;
+	padding: 7px;
+	width: 70px;
+	height: 30px;
+}
+
+.form_list li input#submit:hover {
+	background-color: var(--bg-1-dim);
+	cursor: pointer;
+}
+
+@media only screen and (max-width: 1000px) {
+	#wrapper {
+		margin: 0 auto;
+		width: 500px;
+	}
+
+	.form_list {
+		padding: 8%;
+	}	
+
+	.form_list li {
+		margin-left: 0px;
+		margin-right: 0px;
+	}
+
+	.form_list li input {
+		width: 97%;
+	}
+
+	.right {
+		float: left;
+	}
+
+	.list li {
+		margin-left: 0;
+		margin-right: 0;
+	}
+
+	.content {
+		width: calc(100% - 60px) ;
+	}
+} 
+
+@media only screen and (max-width: 500px) {
+	#wrapper {
+		width: 100%;
+	}
+
+	.content {
+		width: 88%;
+	}
+} 

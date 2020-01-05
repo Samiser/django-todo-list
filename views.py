@@ -5,9 +5,12 @@ from django.urls import reverse
 
 from .models import Item, List
 
-def index(request):
+def index(request, list_id = 1):
     lists = List.objects.all()
-    return render(request, 'todo/index.html', {'lists': lists})
+    parent_list = get_object_or_404(List, pk=list_id)
+    items = Item.objects.filter(todo_list=parent_list)
+    context = {'lists':lists, 'list':parent_list, 'items':items}
+    return render(request, 'todo/index.html', context)
 
 def list(request, list_id):
     parent_list = get_object_or_404(List, pk=list_id)
