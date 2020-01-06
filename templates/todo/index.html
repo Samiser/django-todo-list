@@ -5,35 +5,17 @@
 	<title>Samiser's Todo List</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1"/> 
 	<link rel="stylesheet" type="text/css" href="{% static 'todo/css/style.css' %}">
-	<script src="{% static 'todo/js/addlist.js' %}"></script>
-	<script src="{% static 'todo/js/additem.js' %}"></script>
 </head>
 <body>
 <div id='wrapper'>
 	<h1>Samiser's Todo List</h1>
-	<div class='content left'>
-		<h1>Lists</h1>
-		{% if lists %}
-			<ul class="list" id="list_list">
-			{% include 'todo/list_list.html' %}
-			</ul>
-		{% else %}
-			<p>You don't have any lists</p>
-		{% endif %}
+	<h2>{{ id }}</h2>
+	<div class='content left' id="list_list">
+		{% include 'todo/list_list.html' %}
 	</div>
 
-	<div class='content right'>
-		<h1>{{ list.name }}</h1>
-		<p>{{ list.description }}</p>
-		<ul class="list">
-		<li class="add" id="add_item">
-			<input type="text" id="new_item_content">
-			<Button onclick="addItem({{ list.id }})">Add</button>
-		</li>
-		</ul>
-		<div id="todo_list">
-			{% include 'todo/list_only.html' %}
-		</div>
+	<div id="todo_list" class='content right'>
+		{% include 'todo/list_only.html' with actual_list=list.0 %}
 	</div>
 
 	<div id="add_list_div" class='content left'>
@@ -45,8 +27,14 @@
 				<li><label for="new_list_description">About</label>	
 				<input name='description' type='text' id='new_list_description'></input></li>
 				<li><input id="submit" type='submit' value='Add List'></input></li>
+			</ul>
 		</form>
 	</div>
 </div>
+
+<script>let list_id = {{ list.id }}</script>
+<script src="{% static 'todo/js/additem.js' %}"></script>
+<script src="{% static 'todo/js/addlist.js' %}"></script>
+
 </body>
 </html>

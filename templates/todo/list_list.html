@@ -1,3 +1,10 @@
+<h1>Lists</h1>
+{% if lists %}
+<ul class="list">
 {% for list in lists %}
-	<li><a href="{% url 'todo:index' list.id %}">{{ list.name }}</a><button onclick="removeList({{ list.id }})">Delete</button></li>
+	<li><a href="{% url 'todo:index' list.id %}" onclick="loadList({{ list.id }}); return false;">{{ list.name }}</a><button onclick="removeList({{ list.id }})">Delete</button></li>
 {% endfor %}
+</ul>
+{% else %}
+<p>You don't have any lists</p>
+{% endif %}

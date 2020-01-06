@@ -1,17 +1,34 @@
-<h2>To Do</h2>
+{% if list %}
+<h1>{{ list.name }}</h1>
+<p>{{ list.description }}</p>
 <ul class="list">
-{% for item in items %}
-	{% if not item.done %}
-	<li><button onclick="doneItem({{ list.id }},{{ item.id }})">Done</button>{{ item.content }}</li>
-	{% endif %}
-{% endfor %}
+<li class="add" id="add_item">
+	<form action="#" onsubmit="addItem({{ list.id }}); return false;">
+		<input type="text" id="new_item_content"></input>
+		<input id="add_item_submit" type="submit" value="Add"></input>
+	</form>
+</li>
 </ul>
 
-<h2>Done</h2>
-<ul class="list">
-{% for item in items %}
-	{% if item.done %}
-		<li><button onclick="deleteItem({{ list.id }},{{ item.id }})">Delete</button>{{ item.content }}</li>
-	{% endif %}
-{% endfor %}
-</ul>
+<div>
+	<h2>To Do</h2>
+	<ul class="list">
+	{% for item in items %}
+		{% if not item.done %}
+		<li><button onclick="doneItem({{ list.id }},{{ item.id }})">Done</button>{{ item.content }}</li>
+		{% endif %}
+	{% endfor %}
+	</ul>
+
+	<h2>Done</h2>
+	<ul class="list">
+	{% for item in items %}
+		{% if item.done %}
+			<li><button onclick="deleteItem({{ list.id }},{{ item.id }})">Delete</button>{{ item.content }}</li>
+		{% endif %}
+	{% endfor %}
+	</ul>
+</div>
+{% else %}
+<p>Try adding a list using the form below</p>
+{% endif %}

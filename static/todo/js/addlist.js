@@ -10,7 +10,7 @@ function addList() {
 			document.getElementById("list_list").innerHTML = this.responseText;
 		}
 	};
-	xhttp.open("POST", "/todo/add/", true);
+	xhttp.open("POST", "/add/", true);
 	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 	xhttp.send("name=" + document.getElementById('new_list_name').value 
 		+ "&description=" + document.getElementById('new_list_description').value); 
@@ -22,9 +22,10 @@ function removeList(list_id) {
 		if (this.readyState == 4 && this.status == 200) {
 			// refresh list
 			document.getElementById("list_list").innerHTML = this.responseText;
+			loadList();
 		}
 	};
-	xhttp.open("POST", "/todo/remove/", true);
+	xhttp.open("POST", "/remove/", true);
 	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 	xhttp.send("list_id=" + String(list_id)); 
 }

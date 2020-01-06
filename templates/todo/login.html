@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+<head>
+	{% load static %}
+	<title>Samiser's Todo List</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1"/> 
+	<link rel="stylesheet" type="text/css" href="{% static 'todo/css/style.css' %}">
+</head>
+<body>
+<div id='wrapper'>
+	<h1>Samiser's Todo List</h1>
+	<div id="enter_id_form" class='content' style="display: block">
+		<h1>Enter ID</h1>
+		<form action="/" method="post">
+			{% csrf_token %}
+			<ul class="form_list">
+				<li><input name='id' type='text' id='enter_id'></input>
+				<input id="submit" type='submit' value='Enter'></input></li>
+				<input type="hidden" id="set_id" name="set_id" value="1">
+			</ul>
+		</form>
+	</div>
+</div>
+
+<script src="{% static 'todo/js/addlist.js' %}"></script>
+<script src="{% static 'todo/js/additem.js' %}"></script>
+
+</body>
+</html>
