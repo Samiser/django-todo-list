@@ -1,9 +1,8 @@
 :root {
 	--bg-1: #43aa8b;
-	--bg-1-dim: #2a9374;
 	--bg-2: #254441;
-	--fg-1: #d1faff;
 	--bg-3: #272d2d;
+	--fg-1: #d1faff;
 }
 
 body {
@@ -37,8 +36,15 @@ button {
 }
 
 button:hover {
-	background-color: var(--bg-1-dim);
+	filter: brightness(0.9);
 	cursor: pointer;
+}
+
+#change_id {
+	width: 90px;
+	height: 36px;
+	background-color: var(--bg-2);
+	color: var(--fg-1);
 }
 
 input {
@@ -65,7 +71,7 @@ label {
 }
 
 #add_item_submit:hover {
-	background-color: var(--bg-1-dim);
+	filter: brightness(0.9);
 	cursor: pointer;
 }
 
@@ -159,7 +165,7 @@ label {
 }
 
 .form_list li input#submit:hover {
-	background-color: var(--bg-1-dim);
+	filter: brightness(0.9);
 	cursor: pointer;
 }
 

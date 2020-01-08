@@ -9,7 +9,7 @@
 <body>
 <div id='wrapper'>
 	<h1>Samiser's Todo List</h1>
-	<h2>{{ id }}</h2>
+	<h2>{{ id }} <a href="{% url 'todo:login' %}"><button id="change_id">Change ID</button></a></h2>
 	<div class='content left' id="list_list">
 		{% include 'todo/list_list.html' %}
 	</div>
