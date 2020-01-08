@@ -32,7 +32,14 @@
 	</div>
 </div>
 
-<script>let list_id = {{ list.id }}</script>
+{% if list %}
+<script>
+	let list_id = {{ list.id }};
+</script>
+{% endif %}
+<script>
+	let url = "{% url 'todo:index' %}";
+</script>
 <script src="{% static 'todo/js/additem.js' %}"></script>
 <script src="{% static 'todo/js/addlist.js' %}"></script>
 

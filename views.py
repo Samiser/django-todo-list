@@ -77,4 +77,5 @@ def add_list(request):
 def remove_list(request):
     target_list = get_object_or_404(List, pk=request.POST['list_id'])
     target_list.delete()
-    return render(request, 'todo/list_list.html', {'lists': List.objects.all()})
+    lists = List.objects.filter(user_id=request.session['id'])
+    return render(request, 'todo/list_list.html', {'lists': lists})

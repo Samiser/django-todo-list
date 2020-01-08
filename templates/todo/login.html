@@ -11,7 +11,7 @@
 	<h1>Samiser's Todo List</h1>
 	<div id="enter_id_form" class='content' style="display: block">
 		<h1>Enter ID</h1>
-		<form action="/" method="post">
+		<form action={% url 'todo:index' %} method="post">
 			{% csrf_token %}
 			<ul class="form_list">
 				<li><input name='id' type='text' id='enter_id'></input>
