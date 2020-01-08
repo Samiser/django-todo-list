@@ -1,3 +1,29 @@
+function loadList(list_id) {
+	let xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function() {
+	  if (this.readyState == 4 && this.status == 200) {
+			// refresh list
+			document.getElementById("todo_list").innerHTML = this.responseText;
+	  }
+	};
+	xhttp.open("GET", url + String(list_id) + "/list_only/", true);
+	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	xhttp.send(); 
+}
+
+function loadLists() {
+	let xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function() {
+	  if (this.readyState == 4 && this.status == 200) {
+			// refresh list
+			document.getElementById("list_list").innerHTML = this.responseText;
+	  }
+	};
+	xhttp.open("GET", url + "list_list/", true);
+	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	xhttp.send(); 
+}
+
 function addList() {
 	let xhttp = new XMLHttpRequest();
 	xhttp.onreadystatechange = function() {
@@ -6,8 +32,9 @@ function addList() {
 			document.getElementById('new_list_name').value = "";
 			document.getElementById('new_list_description').value = "";
 
-			// refresh list
-			document.getElementById("list_list").innerHTML = this.responseText;
+			// refresh lists
+			loadList(this.responseText);
+			loadLists();
 		}
 	};
 	xhttp.open("POST", url + "add/", true);
@@ -20,9 +47,14 @@ function removeList(list_id) {
 	let xhttp = new XMLHttpRequest();
 	xhttp.onreadystatechange = function() {
 		if (this.readyState == 4 && this.status == 200) {
-			// refresh list
-			document.getElementById("list_list").innerHTML = this.responseText;
-			document.getElementById("todo_list").innerHTML = "<p>You don't have any lists</p>";
+			// refresh lists
+			if (Number(this.responseText) == -1) {
+				document.getElementById("todo_list").innerHTML = "<p>Try adding a list using the form below</p>";
+			}
+			else {
+				loadList(Number(this.responseText));
+			}
+			loadLists();
 		}
 	};
 	xhttp.open("POST", url + "remove/", true);

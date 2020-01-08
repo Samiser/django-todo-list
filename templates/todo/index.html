@@ -20,7 +20,7 @@
 
 	<div id="add_list_div" class='content left'>
 		<h1>Add a List</h1>
-		<form action="{% url 'todo:add_list' %}" method="post">
+		<form action="{% url 'todo:add_list' %}" onsubmit="addList(); return false;" method="post">
 			<ul class="form_list">
 				<li><label for="new_list_name">Name</label>	
 				<input name='name' type='text' id='new_list_name'></input></li>

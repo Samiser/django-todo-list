@@ -12,6 +12,7 @@ urlpatterns = [
     path('<int:list_id>/remove/', views.remove, name='remove'),
     path('<int:list_id>/delete/', views.delete, name='delete'),
     path('<int:list_id>/list_only/', views.list_only, name='list_only'),
+    path('list_list/', views.list_list, name='list_list'),
     path('remove/', views.remove_list, name='remove_list'),
     path('add/', views.add_list, name='add_list'),
 ]

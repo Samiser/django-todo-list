@@ -39,16 +39,3 @@ function deleteItem(list_id, item_id) {
 	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 	xhttp.send("item_id=" + String(item_id)); 
 }
-
-function loadList(list_id) {
-	let xhttp = new XMLHttpRequest();
-	xhttp.onreadystatechange = function() {
-	  if (this.readyState == 4 && this.status == 200) {
-			// refresh list
-			document.getElementById("todo_list").innerHTML = this.responseText;
-	  }
-	};
-	xhttp.open("GET", url + String(list_id) + "/list_only/", true);
-	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-	xhttp.send(); 
-}

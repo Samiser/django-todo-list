@@ -39,6 +39,10 @@ def list_only(request, list_id):
     items = Item.objects.filter(todo_list=target_list)
     return render(request, 'todo/list_only.html', {'items':items, 'list':target_list})
 
+def list_list(request):
+    lists = List.objects.filter(user_id=request.session['id'])
+    return render(request, 'todo/list_list.html', {'lists': lists})
+
 def login(request):
     return render(request, 'todo/login.html', {})
 
@@ -62,8 +66,9 @@ def remove(request, list_id):
 @csrf_exempt
 def delete(request, list_id):
     target_list = get_object_or_404(List, pk=list_id)
-    item = get_object_or_404(Item, pk=request.POST['item_id'])
-    item.delete()
+    if target_list.id == request.session['id']:
+        item = get_object_or_404(Item, pk=request.POST['item_id'])
+        item.delete()
     items = Item.objects.filter(todo_list=target_list)
     return render(request, 'todo/list_only.html', {'items':items, 'list':target_list})
 
@@ -71,11 +76,15 @@ def delete(request, list_id):
 def add_list(request):
     new_list = List(name=request.POST['name'], description=request.POST['description'], user_id=request.session['id'])
     new_list.save()
-    return HttpResponseRedirect(reverse('todo:index'))
+    new_list.id
+    return HttpResponse(f'{new_list.id}')
 
 @csrf_exempt
 def remove_list(request):
     target_list = get_object_or_404(List, pk=request.POST['list_id'])
     target_list.delete()
-    lists = List.objects.filter(user_id=request.session['id'])
-    return render(request, 'todo/list_list.html', {'lists': lists})
+    if List.objects.filter(user_id=request.session['id']):
+       list_id = List.objects.filter(user_id=request.session['id'])[0].id
+    else:
+       list_id = -1 
+    return HttpResponse(f'{list_id}')
